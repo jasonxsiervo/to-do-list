@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from './actions';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Nav from './components/Nav';
-import Home from './components/Home';
+import Nav from './Nav';
+import Home from './Home';
 import About from './About';
 import Shop from './Shop';
-import ItemDetail from './components/ItemDetail';
+import ItemDetail from './ItemDetail';
 
 
 function App() {
