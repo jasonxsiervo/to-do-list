@@ -12,12 +12,28 @@ nav {
     font-weight: 700;
 }
 
+.home {
+    display: grid;
+    justify-content: start;
+    color: white;
+}
+
+.logout {
+    display: grid;
+    justify-content: end;
+    color: white;
+}
+
 .nav-links {
-    width: 40%;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(515px, 1fr) minmax(515px, 1fr);
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    background-color: aqua;
+    padding: 0;
+    margin-left: 160px;
+    margin-right: 160px;
 }
 
 .Home {
@@ -99,6 +115,7 @@ nav {
 .task-view {
     display: grid;
     grid-template-columns: minmax(400px, 1fr) 320px;
+    grid-template-rows: 560px 80px;
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
@@ -107,4 +124,28 @@ nav {
                 0 8px 16px rgba(0,0,0,0.07),
                 0 16px 32px rgba(0,0,0,0.07), 
                 0 32px 64px rgba(0,0,0,0.07);
+}
+
+.submit-area {
+    display: grid;
+    /* background-color: aqua; */
+    grid-column: span 2;
+    justify-content: center;
+    align-content: center;
+}
+
+.submit-button {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    width: 55px;
+    height: 55px;
+    border: 0;
+    border-radius: 30px;
+    background-color: #FFD600;
+    font-size: 40px;
+    color: white;
+    outline: none;
+    cursor:pointer;
 }

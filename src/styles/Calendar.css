@@ -1,6 +1,6 @@
 .date-time {
     display: grid;
-    grid-template-columns: 267px;
+    grid-template-columns: 270px;
     grid-template-rows: 200px;
     justify-content: center;
     margin-top: 25px;
@@ -43,12 +43,12 @@
 
 .functional {
     display: grid;
-    grid-template-columns: 280px;
-    grid-template-rows: 233px;
+    grid-template-columns: 266px;
+    /* grid-template-rows: 238px; */
     justify-content: center;
     justify-items: center;
     align-items: center;
-    margin-top: 50px;;
+    /* margin-top: 50px;; */
 }
 
 .date-time-picker {
@@ -65,4 +65,5 @@
     width: 100px;
     height: 1px;    
     margin-bottom: 28px;
+    outline: none;
 }

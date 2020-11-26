@@ -35,6 +35,11 @@ function Home() {
                     <div className="task-calendar">
                         <Calendar />
                     </div>
+                    <div className="submit-area">
+                        <button className="submit-button">
+                            +
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
