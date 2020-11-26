@@ -12,28 +12,31 @@ nav {
     font-weight: 700;
 }
 
-.home {
-    display: grid;
-    justify-content: start;
-    color: white;
-}
-
-.logout {
-    display: grid;
-    justify-content: end;
-    color: white;
-}
-
 .nav-links {
     display: grid;
     grid-template-columns: minmax(515px, 1fr) minmax(515px, 1fr);
     justify-content: space-around;
     align-items: center;
     list-style: none;
-    background-color: aqua;
+    /* background-color: aqua; */
     padding: 0;
     margin-left: 160px;
     margin-right: 160px;
+    font-size: 30px;
+}
+
+.home {
+    display: grid;
+    justify-content: start;
+    color: #707070;
+    text-decoration: none;
+}
+
+.logout {
+    display: grid;
+    justify-content: end;
+    color: #707070;
+    text-decoration: none;
 }
 
 .Home {
@@ -46,7 +49,7 @@ nav {
     grid-template-rows: 640px;
     justify-content: center;
     grid-gap: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 160px;
     margin-right: 160px;
 }

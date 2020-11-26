@@ -6,11 +6,11 @@ function Nav() {
         <nav>
             <ul className="nav-links">
                 <Link className="home" to="/">
-                    <li>Home</li>
+                    <li>to do list</li>
                 </Link>
 
-                <Link to="/shop">
-                    <li className="logout">Shop</li>
+                <Link className="logout" to="/shop">
+                    <li>logout</li>
                 </Link>
 
             </ul>
