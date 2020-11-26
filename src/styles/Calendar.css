@@ -1,0 +1,68 @@
+.date-time {
+    display: grid;
+    grid-template-columns: 267px;
+    grid-template-rows: 200px;
+    justify-content: center;
+    margin-top: 25px;
+    color: white;
+}
+
+.date-time-display {
+    display: grid;
+    grid-template-rows: 1fr 50px 1fr;
+    background-color: #FFD600;
+    border-radius: 20px 20px 0 0;
+    justify-content: center;
+    align-content: center;
+}
+
+.year {
+    display: grid;
+    justify-self: center;
+    align-self: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.date {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.month-day {
+    display: grid;
+    margin-top: 23px;
+    justify-self: center;
+    align-self: flex-start;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.functional {
+    display: grid;
+    grid-template-columns: 280px;
+    grid-template-rows: 233px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin-top: 50px;;
+}
+
+.date-time-picker {
+    display: grid;
+    background-color: #e7e4e4;
+    border-radius: 0 0 20px 20px;
+}
+
+.time-input {
+    justify-self: center;
+    border-radius: 25px;
+    border: 0;
+    padding: 13px; 
+    width: 100px;
+    height: 1px;    
+    margin-bottom: 28px;
+}
