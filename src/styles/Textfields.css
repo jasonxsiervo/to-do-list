@@ -11,7 +11,7 @@
     color: #707070;
     outline: none;
     max-width: 1fr;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 .details {
@@ -19,8 +19,9 @@
     font-size: 15px;
     border: 0;
     color: #707070;
-    max-width: 1fr;
-    min-width: 400px;
+    /* max-width: 1fr;
+    min-width: 400px; */
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
     outline: none;
     resize: none;
     overflow: auto;

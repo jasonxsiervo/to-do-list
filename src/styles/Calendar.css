@@ -1,7 +1,8 @@
 .date-time {
     display: grid;
     grid-template-columns: 270px;
-    grid-template-rows: 200px;
+    /* grid-template-rows: 200px; */
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
     justify-content: center;
     margin-top: 25px;
     color: white;

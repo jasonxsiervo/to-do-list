@@ -12,7 +12,6 @@ function Nav() {
                 <Link className="logout" to="/shop">
                     <li>logout</li>
                 </Link>
-
             </ul>
         </nav>
     );
