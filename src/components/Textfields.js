@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import '../styles/Textfields.css';
 
 
 function Textfields({ passData }) {
 
-    const [title, setTitle] = useState('');
-    const [details, setDetails] = useState('');
-
-    // useEffect(() => {
-    //     console.log("title: ", title);
-    //     console.log("description: ", description);
-    // }, []);
+    const [id, setId] = useState('');
+    const [data, setData] = useState({
+        title: '',
+        details: ''
+    });
 
     function handleChange(e) {
-        switch (e.target.className) {
-            case 'title':
-                setTitle(e.target.value);
-                // passData({ title,  });
-                break;
-            case 'details':
-                setDetails(e.target.value);
-                // passData({ details });
-                break;
-            default:
-                console.log("none");
-                break;
-        }
-        passData({ title, details });
+        // switch (e.target.className) {
+        //     case 'title':
+        //         setTitle(e.target.value);
+        //         // passData({ title,  });
+        //         break;
+        //     case 'details':
+        //         setDetails(e.target.value);
+        //         // passData({ details });
+        //         break;
+        //     default:
+        //         console.log("none");
+        //         break;
+        // }
+        setData(prev => ({ ...prev, [e.target.className]: e.target.value }));
+        setId(uuidv4());
+        passData({ id, data });
         // console.log(title + ' space ' + details);
     }
 

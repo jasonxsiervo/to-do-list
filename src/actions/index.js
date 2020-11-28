@@ -11,10 +11,10 @@ export const decrement = () => {
     };
 };
 
-export const addTask = (userId) => {
+export const addTask = (task) => {
     return {
         type: 'ADD_TASK',
-        userId
+        payload: task,
     }
 };
 

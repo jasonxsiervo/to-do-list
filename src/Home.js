@@ -1,41 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTask } from './actions';
 import Textfields from './components/Textfields';
 import Calendar from './components/Calendar';
+import SingleTask from './components/SingleTask';
 
 function Home() {
 
     var blankTaskState = {
-        Details: {
-            title: "",
-            details: "",
-        },
-        Schedule: {
-            date: "",
-            time: ""
-        }
+        id: undefined,
+        title: "",
+        details: "",
+        date: "",
+        time: "",
     };
     const [textData, setTextData] = useState(blankTaskState);
     const [date, setDate] = useState(undefined);
     const [time, setTime] = useState('')
     const [task, setTask] = useState({});
+    const tasks = useSelector((state) => state.tasks);
+    const dispatch = useDispatch();
+    // console.log("tasks sa home: ", tasks);
 
     useEffect(() => {
         console.log('task updated!', task)
-    }, [task]);
+    }, [tasks]);
 
     const submitForm = async (event) => {
         event.preventDefault();
+        console.log("title: ", textData.data.title);
+        console.log("details: ", textData.data.details);
+        console.log("id: ", textData.id);
         blankTaskState = await {
-            Details: {
-                ...textData
-            },
-            Schedule: {
-                date: date,
-                time: time,
-            }
+            id: textData.id,
+            title: textData.data.title,
+            details: textData.data.details,
+            date: date,
+            time: time,
         };
-        // console.log(blankTaskState);
-        await setTask({ ...blankTaskState });
+        console.log(blankTaskState);
+        // await setTask({ ...blankTaskState });
+        dispatch(addTask(blankTaskState));
     }
 
     return (
@@ -44,21 +49,12 @@ function Home() {
                 <div className="tasks-container">
                     <div className="tasks">
                         <ul className="tasks-list">
-                            <li className="single-task">
-                                <span className="emoji">😀</span>
-                                <div className="single-task-details">
-                                    <span className="title">Title</span>
-                                    <span className="description">Description</span>
-                                </div>
+                            {tasks.map(task => {
+                                return (
+                                    <SingleTask key={task.id} task={task} />
+                                )
+                            })}
 
-                            </li>
-                            <li className="single-task">
-                                <span className="emoji">😀</span>
-                                <div className="single-task-details">
-                                    <span className="title">Title</span>
-                                    <span className="description">Description</span>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>

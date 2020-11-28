@@ -14,7 +14,7 @@ function App() {
   const tasks = useSelector(state => state.tasks);
   // const isLogged = useSelector(state => state.isLogged);
   // const dispatch = useDispatch();
-  console.log('Tasks: ', tasks);
+  // console.log('Tasks: ', tasks);
 
   return (
     <Router>

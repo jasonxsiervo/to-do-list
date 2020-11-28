@@ -81,6 +81,7 @@ nav {
     color: black;
     grid-gap: 3px;
     padding-left: 0;
+    overflow: auto;
 }
 
 .single-task {
@@ -104,13 +105,18 @@ nav {
     padding-left: 20px;
 }
 
-.title {
+.title-tag {
     font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap; 
+    overflow: hidden;
 }
 
-.description {
+.description-tag {
     font-size: 12px;
     font-weight: 400;
+    white-space: nowrap; 
+    overflow: hidden;
 }
 
 .task-view {

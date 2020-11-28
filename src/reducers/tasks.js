@@ -1,10 +1,11 @@
+
 const dataTasks = [
     {
-        "code": "BAcyDyQwcXX",
-        "caption": "Lunch #hamont",
-        "likes": 56,
-        "id": "1161022966406956503",
-        "display_src": `https://picsum.photos/400/400/?image=${Math.floor((Math.random() * 85))}`,
+        "id": "b4234370d-9223-4343a4a-9bc9-f1f5ffdd9070140",
+        "title": "Get Groceries 🛒",
+        "details": "Get apples",
+        "date": "Mon Nov 02 2020 12:00:00 GMT+0800 (Philippine Standard Time) {}",
+        "time": `23:11`,
     },
 ];
 
@@ -15,7 +16,8 @@ const tasksReducer = (state = dataTasks, action) => {
         case 'DECREMENT':
             return state - 1;
         case "ADD_TASK":
-            return state + action.payload;
+            console.log('payload: ', action.payload);
+            return [...state, { ...action.payload }];
         case 'EDIT_TASK':
             return state - 1;
         default:
