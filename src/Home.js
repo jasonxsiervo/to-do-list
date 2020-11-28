@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Textfields from './components/Textfields';
 import Calendar from './components/Calendar';
 
 function Home() {
+
+    var blankTaskState = {
+        Details: {
+            title: "",
+            details: "",
+        },
+        Schedule: {
+            date: "",
+            time: ""
+        }
+    };
+    const [textData, setTextData] = useState(blankTaskState);
+    const [date, setDate] = useState(undefined);
+    const [time, setTime] = useState('')
+    const [task, setTask] = useState({});
+
+    useEffect(() => {
+        console.log('task updated!', task)
+    }, [task]);
+
+    const submitForm = async (event) => {
+        event.preventDefault();
+        blankTaskState = await {
+            Details: {
+                ...textData
+            },
+            Schedule: {
+                date: date,
+                time: time,
+            }
+        };
+        // console.log(blankTaskState);
+        await setTask({ ...blankTaskState });
+    }
 
     return (
         <div className="Home">
@@ -28,19 +62,21 @@ function Home() {
                         </ul>
                     </div>
                 </div>
-                <div className="task-view">
-                    <div className="task-textfields">
-                        <Textfields />
+                <form onSubmit={submitForm}>
+                    <div className="task-view">
+                        <div className="task-textfields">
+                            <Textfields passData={(data) => setTextData(data)} />
+                        </div>
+                        <div className="task-calendar">
+                            <Calendar passDate={(date) => setDate(date)} passTime={(time) => setTime(time)} />
+                        </div>
+                        <div className="submit-area">
+                            <button className="submit-button" type="submit">
+                                +
+                            </button>
+                        </div>
                     </div>
-                    <div className="task-calendar">
-                        <Calendar />
-                    </div>
-                    <div className="submit-area">
-                        <button className="submit-button">
-                            +
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     );
