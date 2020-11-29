@@ -1,20 +1,10 @@
-const dataUsers = [
-    {
-        "userId": "87323242342342",
-        "email": "jason.siervo@gmail.com",
-        "firstName": "Jason",
-        "lastname": "Siervo",
-        "password": "secret"
-    },
-    {
-        "userId": "87323242342342",
-        "email": "angelo.siervo@gmail.com",
-        "firstName": "Angelo Isaac",
-        "lastname": "Siervo",
-        "password": "password"
-    },
-
-];
+const dataUsers = {
+    "userId": "87323242342342",
+    "firstName": "Jason",
+    "lastname": "Siervo",
+    "email": "jason.siervo@gmail.com",
+    "password": "secret"
+};
 
 const loggedReducer = (state = dataUsers, action) => {
     switch (action.type) {
