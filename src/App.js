@@ -1,40 +1,45 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from './actions';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './styles/App.css';
+import ProtectedRoute from './ProtectedRoute';
 import Nav from './Nav';
 import Home from './Home';
-import About from './About';
-import Shop from './Shop';
-import ItemDetail from './ItemDetail';
+import Login from './Login';
 
 
 function App() {
-  const tasks = useSelector(state => state.tasks);
-  // const isLogged = useSelector(state => state.isLogged);
-  // const dispatch = useDispatch();
-  // console.log('Tasks: ', tasks);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const login = () => {
+    console.log("LOGIN TRIGERRED!");
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
 
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Nav logout={logout} isAuthenticated={isAuthenticated} />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={About} />
-          <Route path="/shop" exact component={Shop} />
-          <Route path="/shop/:id" component={ItemDetail} />
+          <Route path="/login" exact>
+            {
+              isAuthenticated ? <Redirect to="/" exact /> : <Route path="/login" exact render={() => <Login login={login} />} />
+            }
+          </Route>
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            path="/" exact
+            logout={logout}
+            component={Home}
+          />
+          <Route path="*">
+            <div>404 Not found</div>
+          </Route>
+
         </Switch>
-
-        {/* <h1>Counter {tasks}</h1> */}
-        {/* <button onClick={() => dispatch(increment(5))}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
-
-        {
-          isLogged ?
-            <h3>valuable information i shouldn't see</h3> : <h3>DENIED</h3>
-        } */}
       </div>
     </Router>
   );
