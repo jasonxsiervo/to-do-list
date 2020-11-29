@@ -1,19 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function Nav() {
+function Nav({ logout, isAuthenticated }) {
     return (
         <nav>
-            <ul className="nav-links">
-                <Link className="home" to="/">
-                    <li>to do list</li>
-                </Link>
-
-                <Link className="logout" to="/shop">
-                    <li>logout</li>
-                </Link>
-            </ul>
-        </nav>
+            {
+                isAuthenticated ?
+                    <ul className="nav-links">
+                        <Link className="home" to="/">
+                            <li>to do list</li>
+                        </Link>
+                        <div className="logout-container">
+                            <button className="logout-button" title="Logout" onClick={logout}>
+                                logout
+                    </button>
+                        </div>
+                    </ul>
+                    :
+                    <ul className="nav-link">
+                        <Link className="home" to="/">
+                            <li>to do list</li>
+                        </Link>
+                    </ul>
+            }
+        </nav >
     );
 }
 
