@@ -26,6 +26,21 @@ nav {
     grid-gap: 20px;
 }
 
+.nav-link {
+    display: grid;
+    /* grid-template-columns: minmax(515px, 1fr) minmax(515px, 1fr); */
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    list-style: none;
+    /* background-color: aqua; */
+    padding: 0;
+    margin-left: 160px;
+    margin-right: 160px;
+    font-size: 40px;
+    grid-gap: 20px;
+}
+
 .home {
     display: grid;
     justify-content: start;
@@ -33,11 +48,19 @@ nav {
     text-decoration: none;
 }
 
-.logout {
+.logout-container {
     display: grid;
     justify-content: end;
-    color: #707070;
     text-decoration: none;
+}
+
+.logout-button {
+    border: none;
+    color: #707070;
+    font-weight: 700;
+    font-size: 30px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .app-container {
@@ -55,7 +78,7 @@ nav {
 .tasks-container {
     display: grid;
     grid-template-columns: 300px;
-    grid-template-rows: 1fr;
+    /* grid-template-rows: 1fr; */
     background-color: white;
     justify-content: center;
     border-radius: 20px;
@@ -74,10 +97,10 @@ nav {
 }
 
 .tasks-list {
-    display: grid;
+    /* display: grid; */
     list-style: none;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat( 70px);
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: repeat( 70px); */
     color: black;
     grid-gap: 3px;
     padding-left: 0;
@@ -86,10 +109,12 @@ nav {
 
 .single-task {
     display: grid;
-    grid-template-columns: 50px 1fr;
-    grid-template-rows: 50px;
-    padding: 10px;
-    padding-left: 22px;
+    grid-template-columns: 50px minmax(150px, 155px) 25px 25px;
+    /* height: 100px;
+    background-color: blanchedalmond; */
+    padding: 5px;
+    padding-left: 18px;
+    cursor: pointer;
 }
 
 .emoji {
@@ -110,6 +135,18 @@ nav {
     font-size: 15px;
     white-space: nowrap; 
     overflow: hidden;
+    /* background-color: lightcoral; */
+    max-width: 170px;
+}
+
+.title-tag-strike {
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-decoration: line-through;
+    /* background-color: lightcoral; */
+    max-width: 170px;
 }
 
 .description-tag {
@@ -117,6 +154,36 @@ nav {
     font-weight: 400;
     white-space: nowrap; 
     overflow: hidden;
+    /* background-color: lightsalmon; */
+}
+
+.description-tag-strike {
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-decoration: line-through;
+    /* background-color: lightsalmon; */
+}
+
+.done-button {
+    border: 0;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.delete-button {
+    border: 0;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    color: #FFD600;
 }
 
 .task-view {
@@ -154,7 +221,7 @@ nav {
     font-size: 40px;
     color: white;
     outline: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .submit-button:hover {
@@ -165,3 +232,4 @@ nav {
     0 16px 32px rgba(0,0,0,0.07), 
     0 32px 64px rgba(0,0,0,0.07);
 }
+
