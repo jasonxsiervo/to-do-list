@@ -1,83 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { addTask } from './actions';
-import Textfields from './components/Textfields';
-import Calendar from './components/Calendar';
 import SingleTask from './components/SingleTask';
+import CreateTask from './components/CreateTask';
+import EditTask from './components/EditTask';
 
 function Home({ logout, ...rest }) {
 
-    var blankTaskState = {
-        id: undefined,
-        title: "",
-        details: "",
-        date: "",
-        time: "",
-    };
-    const [textData, setTextData] = useState(blankTaskState);
-    const [date, setDate] = useState(undefined);
-    const [time, setTime] = useState('')
     const [task, setTask] = useState({});
     const tasks = useSelector((state) => state.tasks);
-    const dispatch = useDispatch();
-    // console.log("tasks sa home: ", tasks);
+    const [renderAdd, setRenderAdd] = useState(true);
 
     useEffect(() => {
-        // console.log('task updated!', task)
     }, [task]);
 
-    const submitForm = async (event) => {
-        event.preventDefault();
-        console.log("title: ", textData.data);
-        // console.log("details: ", textData.data.details);
-        // console.log("id: ", textData.id);
-        blankTaskState = await {
-            id: textData.id || '',
-            title: textData.data.title || '',
-            details: textData.data.details || '',
-            date: date || '',
-            time: time || '',
-        };
-        console.log(blankTaskState);
-        // await setTask({ ...blankTaskState });
-        dispatch(addTask(blankTaskState));
-    };
+    function handleData(data) {
+        setTask(data);
+        setRenderAdd(false);
+    }
+
+    const toggle = () => {
+        setTask({});
+        setRenderAdd(true);
+    }
 
     return (
         <div className="Home">
             <div className="app-container">
                 <div className="tasks-container">
                     <div className="tasks">
+                        <p className="tasks-header">Tasks</p>
                         <ul className="tasks-list">
                             {tasks.map(task => {
                                 return (
                                     <SingleTask
                                         key={task.id}
                                         task={task}
-                                        getData={(data) => setTask(data)}
+                                        getData={(data) => handleData(data)}
+                                        toggle={toggle}
                                     />
                                 )
                             })}
 
                         </ul>
+                        <button title="Add Task" className="add-button" onClick={toggle}>
+                            +
+                        </button>
                     </div>
                 </div>
-                <form onSubmit={submitForm}>
-                    <div className="task-view">
-                        <div className="task-textfields">
-                            <Textfields task={task} passData={(data) => setTextData(data)} />
-                        </div>
-                        <div className="task-calendar">
-                            <Calendar task={task} passDate={(date) => setDate(date)} passTime={(time) => setTime(time)} />
-                        </div>
-                        <div className="submit-area">
-                            <button title="Submit" className="submit-button" type="submit">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
+                {
+                    Object.keys(task).length === 0 && renderAdd ? <CreateTask /> : <EditTask task={task} />
+                }
             </div>
         </div>
     );

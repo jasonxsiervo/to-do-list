@@ -18,11 +18,10 @@ export const addTask = (task) => {
     }
 };
 
-export const editTask = (userId, taskId) => {
+export const editTask = (task) => {
     return {
         type: 'EDIT_TASK',
-        userId,
-        taskId
+        payload: task,
     }
 };
 

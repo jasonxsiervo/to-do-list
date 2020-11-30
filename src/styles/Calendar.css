@@ -45,17 +45,17 @@
 .functional {
     display: grid;
     grid-template-columns: 266px;
-    /* grid-template-rows: 238px; */
     justify-content: center;
-    justify-items: center;
-    align-items: center;
-    /* margin-top: 50px;; */
 }
 
 .date-time-picker {
     display: grid;
+    justify-items: center;
+    grid-template-columns: 266px;
     background-color: #e7e4e4;
     border-radius: 0 0 20px 20px;
+    padding-top: 13px;
+    grid-gap: 13px;
 }
 
 .time {

@@ -13,9 +13,6 @@ function Login({ login }) {
 
     const handleLoggingIn = (e) => {
         e.preventDefault();
-        console.log("isLogged: ", isLogged.email);
-        console.log("isLogged: ", isLogged.password);
-        // console.log(props)
         if (credentials.email === isLogged.email && credentials.password === isLogged.password) {
             login();
         } else {
@@ -39,7 +36,7 @@ function Login({ login }) {
 
                 <form className="form-inner" onSubmit={handleLoggingIn}>
                     <div className="form-group">
-                        <label for="email">Email</label>
+                        <label className="email">Email</label>
                         <input
                             type="email"
                             className="input"
@@ -52,7 +49,7 @@ function Login({ login }) {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="password">Password</label>
+                        <label className="password">Password</label>
                         <input
                             type="password"
                             className="input"

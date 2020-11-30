@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './styles/App.css';
 import ProtectedRoute from './ProtectedRoute';
-import Nav from './Nav';
+import Nav from './components/Nav';
 import Home from './Home';
 import Login from './Login';
 
@@ -11,7 +11,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = () => {
-    console.log("LOGIN TRIGERRED!");
     setIsAuthenticated(true);
   };
 

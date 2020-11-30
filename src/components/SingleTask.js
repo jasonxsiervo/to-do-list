@@ -3,15 +3,12 @@ import { deleteTask } from '../actions';
 import { useDispatch } from 'react-redux';
 
 const SingleTask = (props) => {
-
     const [strike, setStrike] = useState(false);
-    // console.log("props: ", props.task)
     const dispatch = useDispatch();
     const { task } = props;
 
     const handleDelete = () => {
-        // console.log('delete!');
-        // console.log("id: ", props.task.id);
+        props.toggle();
         dispatch(deleteTask(props.task.id));
     }
 
@@ -24,13 +21,13 @@ const SingleTask = (props) => {
     }
 
     return (
-        <li className="single-task" onClick={handleClick}>
-            <span className="emoji">🐧</span>
-            <div className="single-task-details">
+        <li className="single-task">
+            <span className="emoji" onClick={handleClick}>🐧</span>
+            <div className="single-task-details" onClick={handleClick}>
                 <span className={strike ? "title-tag-strike" : "title-tag"}>{task.title}</span>
                 <span className={strike ? "description-tag-strike" : "description-tag"}>{task.details}</span>
             </div>
-            {!strike ? <button title="Done" className="done-button" onClick={strikeText}>✅</button> : <butto className="done-button" onClick={strikeText} disabled></butto>}
+            {!strike ? <button title="Done" className="done-button" onClick={strikeText}>✅</button> : <button className="done-button" onClick={strikeText} disabled></button>}
             <button title="Delete" className="delete-button" onClick={handleDelete}>❌</button>
         </li>
     )
