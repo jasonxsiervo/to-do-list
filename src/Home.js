@@ -12,7 +12,7 @@ function Home({ logout, ...rest }) {
     const [renderAdd, setRenderAdd] = useState(true);
 
     useEffect(() => {
-    }, [task]);
+    }, [tasks]);
 
     function handleData(data) {
         setTask(data);
