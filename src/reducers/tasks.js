@@ -20,11 +20,8 @@ const tasksReducer = (state = dataTasks, action) => {
             return [...state, { ...action.payload }];
         case 'EDIT_TASK':
             const copy = [...state];
-            // console.log("copy of state:", copy);
-            // console.log("action.payload: ", action.payload);
             const j = copy.findIndex(x => x.id === action.payload);
             copy.splice(j, 1, action.payload)
-            console.log("copy: ", copy)
             return [...copy];
         case 'VIEW_TASK':
             return state - 1;
