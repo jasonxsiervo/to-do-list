@@ -6,6 +6,7 @@ const dataTasks = [
         "details": "Get apples",
         "date": "Mon Nov 02 2020 12:00:00 GMT+0800 (Philippine Standard Time)",
         "time": `23:11`,
+        "strike": true,
     }
 ];
 
@@ -18,7 +19,13 @@ const tasksReducer = (state = dataTasks, action) => {
         case "ADD_TASK":
             return [...state, { ...action.payload }];
         case 'EDIT_TASK':
-            return state - 1;
+            const copy = [...state];
+            // console.log("copy of state:", copy);
+            // console.log("action.payload: ", action.payload);
+            const j = copy.findIndex(x => x.id === action.payload);
+            copy.splice(j, 1, action.payload)
+            console.log("copy: ", copy)
+            return [...copy];
         case 'VIEW_TASK':
             return state - 1;
         case 'DELETE_TASK':
