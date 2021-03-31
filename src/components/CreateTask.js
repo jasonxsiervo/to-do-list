@@ -17,14 +17,15 @@ function CreateTask() {
         title: '',
         details: '',
         date: '',
-        time: ''
+        time: '',
+        strike: false,
     });
     const [date, setDate] = useState(undefined);
     const dispatch = useDispatch();
 
     function handleChange(e) {
-        setData(prev => ({ ...prev, [e.target.className]: e.target.value }));
-        setData(prev => ({ ...prev, id: uuidv4() }));
+        setData(state => ({ ...state, [e.target.className]: e.target.value }));
+        setData(state => ({ ...state, id: uuidv4() }));
     };
 
     function handleDayClick(day, { selected }) {
@@ -37,7 +38,7 @@ function CreateTask() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setData(prev => ({ ...prev, date: date }));
+        setData(state => ({ ...state, date: date }));
         dispatch(addTask(data));
     }
 
