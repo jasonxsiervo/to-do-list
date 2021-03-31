@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import { deleteTask } from '../actions';
+import React, { useState, useEffect } from 'react';
+import { deleteTask, editTask } from '../actions';
 import { useDispatch } from 'react-redux';
 
 const SingleTask = (props) => {
     const [strike, setStrike] = useState(false);
+    const [taskState, setTaskState] = useState({
+        id: '',
+        title: '',
+        details: '',
+        date: '',
+        time: '',
+        strike: false,
+    })
     const dispatch = useDispatch();
     const { task } = props;
+
+    useEffect(() => {
+        setTaskState({ ...task, strike: true });
+    }, [strike])
 
     const handleDelete = () => {
         props.toggle();
@@ -16,8 +28,10 @@ const SingleTask = (props) => {
         props.getData({ task });
     }
 
-    const strikeText = () => {
+    const strikeText = async () => {
         setStrike(!strike);
+        console.log("strikeTest taskState: ", taskState)
+        dispatch(editTask(taskState))
     }
 
     return (
