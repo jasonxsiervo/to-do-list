@@ -30,7 +30,6 @@ const SingleTask = (props) => {
 
     const strikeText = async () => {
         setStrike(!strike);
-        console.log("strikeTest taskState: ", taskState)
         dispatch(editTask(taskState))
     }
 

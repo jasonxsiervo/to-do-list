@@ -12,6 +12,8 @@ function Home({ logout, ...rest }) {
     const [renderAdd, setRenderAdd] = useState(true);
 
     useEffect(() => {
+        console.log('NEW UPDATE IN THE DATA!!!')
+        console.log('tasks: ', tasks)
     }, [tasks]);
 
     function handleData(data) {

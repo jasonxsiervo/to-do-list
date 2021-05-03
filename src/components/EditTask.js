@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DayPicker from 'react-day-picker';
+import { useDispatch } from 'react-redux';
+import { editTask } from '../actions';
 import '../styles/Textfields.css';
 import '../styles/Calendar.css';
 import saveButton from '../save.png';
@@ -12,13 +14,28 @@ function EditTask(props) {
         title: '',
         details: '',
         date: '',
-        time: ''
+        time: '',
+        strike: false
     });
     const [date, setDate] = useState(undefined);
     const { task } = props.task;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setData(task)
+        console.log('task: ', task)
+        return () => setData({
+            id: '',
+            title: '',
+            details: '',
+            date: '',
+            time: '',
+            strike: false,
+        })
+    }, [task, props]);
 
     function handleChange(e) {
-        setData(prev => ({ ...prev, [e.target.className]: e.target.value }));
+        setData(state => ({ ...state, [e.target.className]: e.target.value }));
         // setData(prev => ({ ...prev, id: uuidv4() }));
     };
 
@@ -33,7 +50,7 @@ function EditTask(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setData(prev => ({ ...prev, date: date }));
-        // dispatch(editTask(data));
+        dispatch(editTask(data));
     }
 
     return (
@@ -41,20 +58,19 @@ function EditTask(props) {
 
             <div className="task-textareas">
                 <div className="title-details-div">
+                    <h1>Edit Task</h1>
                     <input
                         type="text"
-                        value={task.title}
+                        value={data.title}
                         className="title"
-                        placeholder="Add Title"
-                        onChange={(e) => handleChange(e)}
+                        onChange={handleChange}
                     />
                     <textarea
                         type="text"
-                        value={task.details}
+                        value={data.details}
                         className="details"
                         rows="27"
-                        placeholder="Details"
-                        onChange={(e) => handleChange(e)}
+                        onChange={handleChange}
                     />
                 </div>
             </div>
@@ -92,11 +108,15 @@ function EditTask(props) {
                 </div>
             </div>
 
-            <div className="submit-area">
-                <button title="Submit" className="submit-button" type="submit">
-                    <img className="save-img" src={saveButton} alt="save" />
-                </button>
-            </div>
+            {data.strike ?
+                null
+                :
+                <div className="submit-area">
+                    <button title="Submit" className="submit-button" type="submit">
+                        <img className="save-img" src={saveButton} alt="save" />
+                    </button>
+                </div>
+            }
         </form>
     )
 }
